@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ImageBackground } from 'react-native';
 import {
   View,
   Text,
@@ -24,15 +25,16 @@ const SettingsScreen = () => {
   );
 
   return (
+    
     <View style={styles.container}>
       <Text style={styles.title}>Añadir Tienda</Text>
       <TextInput
         style={styles.textInput}
         onChangeText={setTextInputValue}
         value={textInputValue}
-        placeholder="Ingresa un elemento"
+        placeholder="Ingresa una Tienda"
       />
-      <Button title="Agregar" onPress={handleAddItem} />
+      <Button title="Agregar" onPress={handleAddItem}/>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -48,18 +50,22 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: '#fff',
+     
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginTop:20,
+    textAlign:'center',
     marginBottom: 16,
   },
   textInput: {
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
+    borderColor: 'green',
+    borderWidth: 2,
     marginBottom: 16,
     paddingHorizontal: 8,
+    marginTop:20
   },
   list: {
     marginTop: 16,

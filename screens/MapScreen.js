@@ -35,16 +35,6 @@ const [destination,SetDestination] = React.useState({
                     coordinate={destination}
                     onDragEnd={(direction) => SetDestination(direction.nativeEvent.coordinate)}
                 />
-                <MapViewDirections
-                origin={origin}
-                destination={destination}
-                apiKey={'AIzaSyBQ4GAn3F0m_WTrA93SHaT1xJYHZJfwDNE'}
-                />
-                <Polyline
-                coordinates={[origin,destination]}
-                strokeColor='blue'
-                strokeWidth={8}
-                />
             </MapView>
             
 

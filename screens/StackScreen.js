@@ -7,6 +7,7 @@ import {
   FlatList,
   StyleSheet
 } from 'react-native';
+import SettingsScreen from './SettingsScreen';
 
 const StackScreen = () => {
 
@@ -15,6 +16,7 @@ const StackScreen = () => {
             <Text style={styles.Title}>
             Stack Screen
             </Text>
+           
         </View>
     );
 }
