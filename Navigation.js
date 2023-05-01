@@ -6,6 +6,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import StackScreen from "./screens/StackScreen";
+import MapScreen from "./screens/MapScreen";
+
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
@@ -51,6 +53,16 @@ function MyTabs(){
             tabBarIcon:({color,size}) =>(
                 <MaterialCommunityIcons name="shopping" color={color} size={30}/>
             ),
+            headerShown:false
+        }}
+        />
+        <Tab.Screen 
+        name="Map" 
+        component={MapScreen}
+        options={{
+            tabBarLabel:'Mapa',
+            tabBarIcon:({color,size}) =>(
+                <MaterialCommunityIcons name="google-maps" color={color} size={30}/>            ),
             headerShown:false
         }}
         />
