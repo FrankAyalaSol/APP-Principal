@@ -29,6 +29,13 @@ const SettingsScreen = () => {
 
   function deleteTaskHandler(id) {
     setTasks((currentTasks) => {
+      Alert.alert(
+                  '¡Alerta!',
+                  '¿Estás seguro de borrar esta tienda?',
+                  [
+                    {text:'No',onPress:() => console.log('Cancelado')},
+                    {text:'Si',onPress:() => console.log('Cancelado') ,deleteTaskHandler}
+                  ],{cancelable: true})
       return currentTasks.filter((item) => item.id !== id);
     });
   }
