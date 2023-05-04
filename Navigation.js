@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 //pantallas/screens
 import HomeScreen from "./screens/HomeScreen";
 import SettingsScreen from "./screens/SettingsScreen";
-import StackScreen from "./screens/StackScreen";
 import MapScreen from "./screens/MapScreen";
 
 
@@ -41,17 +40,6 @@ function MyTabs(){
             tabBarLabel:'Registro de Tienda',
             tabBarIcon:({color,size}) =>(
                 <MaterialCommunityIcons name="registered-trademark" color={color} size={30}/>
-            ),
-            headerShown:false
-        }}
-        />
-        <Tab.Screen 
-        name="Stack" 
-        component={StackScreen}
-        options={{
-            tabBarLabel:'Listado de Tiendas',
-            tabBarIcon:({color,size}) =>(
-                <MaterialCommunityIcons name="shopping" color={color} size={30}/>
             ),
             headerShown:false
         }}

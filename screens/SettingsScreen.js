@@ -1,79 +1,80 @@
-import React, { useState } from 'react';
-import { ImageBackground } from 'react-native';
-import {
-  View,
-  Text,
-  TextInput,
-  Button,
-  FlatList,
-  StyleSheet
-} from 'react-native';
+import { useState } from "react";
+import { StyleSheet, View, FlatList, Button } from "react-native";
+import TaskItem from "../components/TaskItem";
+import TaskInput from "../components/TaskInput";
 
 const SettingsScreen = () => {
-  const [textInputValue, setTextInputValue] = useState('');
-  const [data, setData] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
 
-  const handleAddItem = () => {
-    if (textInputValue) {
-      setData([...data, { id: data.length + 1, text: textInputValue }]);
-      setTextInputValue('');
-    }
-  };
+  function addTaskHandler(enteredTaskText) {
+    console.log(modalIsVisible);
+    setTasks((currentTasks) => [
+      ...currentTasks,
+      {
+        title: enteredTaskText,
+        id: Math.random().toString(),
+        enabled: true,
+      },
+    ]);
+    endModalHandler();
+  }
 
-  const renderItem = ({ item }) => (
-    <Text style={styles.item}>{item.text}</Text>
-  );
+  function startModalHandler() {
+    setModalIsVisible(true);
+  }
+  function endModalHandler() {
+    setModalIsVisible(false);
+  }
+
+  function deleteTaskHandler(id) {
+    setTasks((currentTasks) => {
+      return currentTasks.filter((item) => item.id !== id);
+    });
+  }
 
   return (
-    
     <View style={styles.container}>
-      <Text style={styles.title}>Añadir Tienda</Text>
-      <TextInput
-        style={styles.textInput}
-        onChangeText={setTextInputValue}
-        value={textInputValue}
-        placeholder="Ingresa una Tienda"
+      <Button
+        title="Add new Task"
+        color="darkgreen"
+        onPress={startModalHandler}
       />
-      <Button title="Agregar" onPress={handleAddItem}/>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        style={styles.list}
+      <TaskInput
+        visible={modalIsVisible}
+        onAddTask={addTaskHandler}
+        onCancel={endModalHandler}
       />
+      <View style={styles.tasksContainer}>
+        <FlatList
+          data={tasks}
+          renderItem={(itemData) => {
+            return (
+              <TaskItem
+                id={itemData.item.id}
+                text={itemData.item.title}
+                enabled={itemData.item.enabled}
+                onDeleteItem={deleteTaskHandler}
+              />
+            );
+          }}
+          keyExtractor={(item, index) => {
+            return item.id;
+          }}
+        />
+      </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    backgroundColor: '#fff',
-     
+    paddingTop: 50,
+    paddingHorizontal: 16,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginTop:20,
-    textAlign:'center',
-    marginBottom: 16,
-  },
-  textInput: {
-    height: 40,
-    borderColor: 'green',
-    borderWidth: 2,
-    marginBottom: 16,
-    paddingHorizontal: 8,
-    marginTop:20
-  },
-  list: {
-    marginTop: 16,
-  },
-  item: {
-    fontSize: 16,
-    marginBottom: 8,
+  tasksContainer: {
+    flex: 5,
   },
 });
-
 export default SettingsScreen;
