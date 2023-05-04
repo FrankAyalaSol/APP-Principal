@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ImageBackground } from "react-native";
 import { StyleSheet, View, TextInput, Button, Modal, Image } from "react-native";
 
 function TaskInput(props) {
@@ -11,23 +12,21 @@ function TaskInput(props) {
     props.onAddTask(enteredTaskText);
     setEnteredTaskText("");
   }
-
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
-
         <TextInput
           style={styles.textInput}
-          placeholder="Write your task"
+          placeholder="Nueva Tienda"
           onChangeText={taskInputHandler}
           value={enteredTaskText}
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Add Task" onPress={onAddTask} color={"darkgreen"} />
+            <Button title="Añadir" onPress={onAddTask} color={"#0073e6"} />
           </View>
           <View style={styles.button}>
-            <Button title="Cancel" onPress={props.onCancel} color={"red"} />
+            <Button title="Cancel" onPress={props.onCancel} color={"#ff4000"} />
           </View>
         </View>
       </View>
@@ -44,14 +43,14 @@ const styles = StyleSheet.create({
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",
-    backgroundColor: "mediumseagreen"
+    backgroundColor: "white"
   },
   textInput: {
     borderWidth: 1,
     borderColor: "#cccccc",
     width: "100%",
     padding: 8,
-    color: "white",
+    color: "black",
     fontSize: 18
   },
   buttonContainer: {

@@ -4,7 +4,7 @@ import MapView, {Marker,Polyline} from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 
 
-const {width,height} = Dimensions.get('screen')
+//const {width,height} = Dimensions.get('screen')
 const MapScreen = () => {
 const [origin,SetOrigin] = React.useState({
     latitude:-12.130561,
@@ -17,7 +17,7 @@ const [destination,SetDestination] = React.useState({
     return(
         <View style={styles.container}>
             <MapView
-            style={{width:width,height:height}}
+            style={{width:"100%",height:"100%"}}
             initialRegion={{
                 latitude:origin.latitude,
                 longitude:origin.longitude,

@@ -15,14 +15,16 @@ function TaskItem(props) {
 
 const styles = StyleSheet.create({
   itemText: {
-    color: "white",
+    color: "black",
   },
   itemView: {
-    borderColor: "green",
-    borderWidth: 1,
-    backgroundColor: "mediumseagreen",
-    borderRadius: 5,
-    padding: 5,
+    borderColor: "black",
+    borderWidth: 4,
+    backgroundColor: "#0099e6",
+    borderRadius: 10,
+    padding: 30,
+    marginBottom:10,
+    marginTop:20
   },
   pressedItem: {
     opacity: 0.7,

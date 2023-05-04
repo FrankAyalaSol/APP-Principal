@@ -2,6 +2,8 @@ import { useState } from "react";
 import { StyleSheet, View, FlatList, Button } from "react-native";
 import TaskItem from "../components/TaskItem";
 import TaskInput from "../components/TaskInput";
+import { ImageBackground } from "react-native";
+
 
 const SettingsScreen = () => {
   const [tasks, setTasks] = useState([]);
@@ -29,22 +31,17 @@ const SettingsScreen = () => {
 
   function deleteTaskHandler(id) {
     setTasks((currentTasks) => {
-      Alert.alert(
-                  '¡Alerta!',
-                  '¿Estás seguro de borrar esta tienda?',
-                  [
-                    {text:'No',onPress:() => console.log('Cancelado')},
-                    {text:'Si',onPress:() => console.log('Cancelado') ,deleteTaskHandler}
-                  ],{cancelable: true})
       return currentTasks.filter((item) => item.id !== id);
     });
   }
 
   return (
+    <ImageBackground source={require("../assets/Portada-Modal.jpg")} style={{height:'100%',width:'100%'}}>
     <View style={styles.container}>
+      
       <Button
-        title="Add new Task"
-        color="darkgreen"
+        title ="Añadir Nueva Tienda"
+        color="#0077b3"
         onPress={startModalHandler}
       />
       <TaskInput
@@ -53,6 +50,7 @@ const SettingsScreen = () => {
         onCancel={endModalHandler}
       />
       <View style={styles.tasksContainer}>
+      
         <FlatList
           data={tasks}
           renderItem={(itemData) => {
@@ -69,8 +67,11 @@ const SettingsScreen = () => {
             return item.id;
           }}
         />
+       
       </View>
+     
     </View>
+    </ImageBackground>
   );
 }
 

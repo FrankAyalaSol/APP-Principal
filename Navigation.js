@@ -10,17 +10,21 @@ import MapScreen from "./screens/MapScreen";
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { ScrollView } from "react-native-gesture-handler";
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs(){
     return (
+        
     <Tab.Navigator
     initialRouteName="Home"
     screenOptions={{
         tabBarActiveTintColor: 'purple'
     }}
+
     >
+        
         <Tab.Screen 
         name="Home" 
         component={HomeScreen}
@@ -39,7 +43,7 @@ function MyTabs(){
         options={{
             tabBarLabel:'Registro de Tienda',
             tabBarIcon:({color,size}) =>(
-                <MaterialCommunityIcons name="registered-trademark" color={color} size={30}/>
+                <MaterialCommunityIcons name="registered-trademark" color={color} size={27}/>
             ),
             headerShown:false
         }}
